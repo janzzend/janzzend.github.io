@@ -1,7 +1,7 @@
 import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
-const base = '/janzzend-profile-v2';
+const base = '/janzzend.github.io';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
