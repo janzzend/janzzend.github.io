@@ -93,9 +93,9 @@ const Assets = {
 	Cake: a('cake.png'),
 	Strapi: a('strapi.png'),
 	Twilio: a('twilio.png'),
-	Stripe: a('stripe.png'),
+	Stripe: a('stripe.svg'),
 	Judo: a('judo.png'),
-	Zapier: a('zapier.png'),
+	Zapier: a('zapier.svg'),
 	Figma: a('figma.png'),
 	XD: a('xd.png'),
 	VSCode: a('vscode.png'),
@@ -103,8 +103,18 @@ const Assets = {
 	AndroidStudio: a('android-studio.png'),
 	Xcode: a('xcode.png'),
 	XcodeCloud: a('xcode-cloud.png'),
-	Azure: a('azure.png'),
-	XML: a('xml.png')
+	Azure: a('azure.svg'),
+	XML: a('xml.png'),
+	Compose: a('compose.png'),
+	SwiftUI: a('swiftui.png'),
+	Gainsight: a('gainsight.png'),
+	MySQL: a('mysql.svg'),
+	MSSQL: a('mssql.png'),
+	Room: a('room.svg'),
+	Realm: a('realm.png'),
+	CoreData: a('coredata.png'),
+	XCTest: a('xctest.png'),
+	Strikt: a('strikt.png')
 };
 
 export default Assets;
