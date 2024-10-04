@@ -8,7 +8,7 @@ const a = (light: string, dark?: string): Asset =>
 	dark ? { dark: gh(dark), light: gh(light) } : gh(light);
 
 const Assets = {
-	Apple: a('apple.png', 'apple-dark.png'),
+	Apple: a('apple.png'),
 	Swift: a('swift.svg'),
 	AWS: a('aws.svg'),
 	Bootstrap: a('bootstrap.svg'),
@@ -84,7 +84,27 @@ const Assets = {
 	SCSI: a('scsi.jpeg'),
 	Sourcepass: a('sourcepass.jpeg'),
 	CCA: a('cca.jpeg'),
-	SpecialtyIQ: a('specialtyiq.png')
+	SpecialtyIQ: a('specialtyiq.png'),
+	PHP: a('php.svg'),
+	WearOS: a('wearos.png'),
+	WatchOS: a('watchos.png'),
+	VBNet: a('vbnet.png'),
+	ASP: a('asp.png'),
+	Cake: a('cake.png'),
+	Strapi: a('strapi.png'),
+	Twilio: a('twilio.png'),
+	Stripe: a('stripe.png'),
+	Judo: a('judo.png'),
+	Zapier: a('zapier.png'),
+	Figma: a('figma.png'),
+	XD: a('xd.png'),
+	VSCode: a('vscode.png'),
+	Intellij: a('intellij.png'),
+	AndroidStudio: a('android-studio.png'),
+	Xcode: a('xcode.png'),
+	XcodeCloud: a('xcode-cloud.png'),
+	Azure: a('azure.png'),
+	XML: a('xml.png')
 };
 
 export default Assets;
