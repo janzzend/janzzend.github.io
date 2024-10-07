@@ -6,14 +6,18 @@ import { omit, type StringWithAutoComplete } from '@riadh-adrani/utils';
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
 const categories = [
+	defineSkillCategory({ name: 'In Progress...', slug: 'progress' }),
 	defineSkillCategory({ name: 'Platforms', slug: 'platform' }),
 	defineSkillCategory({ name: 'Programming Languages', slug: 'pro-lang' }),
 	defineSkillCategory({ name: 'Frameworks', slug: 'framework' }),
 	defineSkillCategory({ name: 'Integrations', slug: 'integration' }),
-	defineSkillCategory({ name: 'Hardware', slug: 'hardware' }),
+	defineSkillCategory({ name: 'Analytics', slug: 'analytics' }),
+	defineSkillCategory({ name: 'Hardware Integration', slug: 'hardware' }),
+	defineSkillCategory({ name: 'Design Patterns', slug: 'pattern' }),
 	defineSkillCategory({ name: 'Version Control', slug: 'version-control' }),
 	defineSkillCategory({ name: 'Project Management', slug: 'projman' }),
 	defineSkillCategory({ name: 'API', slug: 'api' }),
+	defineSkillCategory({ name: 'Lint', slug: 'lint' }),
 	defineSkillCategory({ name: 'Cloud Services', slug: 'cloud' }),
 	defineSkillCategory({ name: 'Databases', slug: 'db' }),
 	defineSkillCategory({ name: 'DevOps', slug: 'devops' }),
@@ -38,6 +42,22 @@ const defineSkill = <S extends string>(
 };
 
 export const items = [
+	defineSkill({
+		slug: 'kmp',
+		color: 'orange',
+		description: 'Kotlin Multi Platform (KMP) is a feature of Kotlin that allows developers to write code that runs on multiple platforms, including iOS, Android, and the web, sharing common business logic while maintaining platform-specific code for UI and APIs.',
+		logo: Assets.KMP,
+		name: 'Kotlin Multi Platform',
+		category: 'progress'
+	}),
+	defineSkill({
+		slug: 'flutter',
+		color: 'blue',
+		description: 'Flutter is an open-source UI software development kit by Google, used to build natively compiled applications for mobile, web, and desktop from a single codebase using the Dart programming language.',
+		logo: Assets.Flutter,
+		name: 'Flutter',
+		category: 'progress'
+	}),
 	defineSkill({
 		slug: 'ios',
 		color: 'white',
@@ -71,6 +91,14 @@ export const items = [
 		category: 'platform'
 	}),
 	defineSkill({
+		slug: 'objc',
+		color: 'orange',
+		description: 'Objective-C is a general-purpose, object-oriented programming language that was the main language used by Apple for macOS and iOS development before the introduction of Swift. It is known for its dynamic runtime and compatibility with C and C++.',
+		logo: Assets.ObjC,
+		name: 'Objective-C',
+		category: 'pro-lang'
+	}),
+	defineSkill({
 		slug: 'swift',
 		color: 'orange',
 		description: 'A powerful and intuitive programming language for iOS, macOS, watchOS, and tvOS development, known for its safety features and performance.',
@@ -87,6 +115,14 @@ export const items = [
 		category: 'pro-lang'
 	}),
 	defineSkill({
+		slug: 'java',
+		color: 'orange',
+		description: 'A versatile, object-oriented programming language, widely used for Android app development and backend systems.',
+		logo: Assets.Java,
+		name: 'Java',
+		category: 'pro-lang'
+	}),
+	defineSkill({
 		slug: 'kotlin',
 		color: 'blue',
 		description: 'A modern, concise programming language for Android and JVM, known for its interoperability with Java and enhanced safety features.',
@@ -95,11 +131,11 @@ export const items = [
 		category: 'pro-lang'
 	}),
 	defineSkill({
-		slug: 'java',
-		color: 'orange',
-		description: 'A versatile, object-oriented programming language, widely used for Android app development and backend systems.',
-		logo: Assets.Java,
-		name: 'Java',
+		slug: 'compose',
+		color: 'green',
+		description: 'A modern Android UI toolkit from Google for building native user interfaces in a declarative way, using Kotlin to create dynamic and responsive layouts.',
+		logo: Assets.Compose,
+		name: 'Jetpack Compose',
 		category: 'pro-lang'
 	}),
 	defineSkill({
@@ -231,17 +267,49 @@ export const items = [
 		category: 'integration'
 	}),
 	defineSkill({
+		slug: 'signalr',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'SignalR',
+		category: 'integration'
+	}),
+	defineSkill({
+		slug: 'actioncable',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Action Cable',
+		category: 'integration'
+	}),
+	defineSkill({
+		slug: 'pusher',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Pusher',
+		category: 'integration'
+	}),
+	defineSkill({
+		slug: 'ganalytics',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Google Analytics',
+		category: 'analytics'
+	}),
+	defineSkill({
 		slug: 'gainsight',
 		color: 'blue',
 		description: 'A customer success platform that helps businesses manage customer relationships, drive product adoption, and reduce churn by providing insights and automating customer engagement workflows.',
 		logo: Assets.Gainsight,
 		name: 'Gainsight',
-		category: 'integration'
+		category: 'analytics'
 	}),
 	defineSkill({
 		slug: 'xctest',
 		color: 'blue',
-		description: 'A customer success platform that helps businesses manage customer relationships, drive product adoption, and reduce churn by providing insights and automating customer engagement workflows.',
+		description: 'A testing framework by Apple used for writing unit tests, performance tests, and UI tests for iOS, macOS, watchOS, and tvOS applications, integrated within Xcode.',
 		logo: Assets.XCTest,
 		name: 'XCTest',
 		category: 'test'
@@ -249,7 +317,7 @@ export const items = [
 	defineSkill({
 		slug: 'strikt',
 		color: 'blue',
-		description: 'A customer success platform that helps businesses manage customer relationships, drive product adoption, and reduce churn by providing insights and automating customer engagement workflows.',
+		description: 'A fluent assertion library for Kotlin, designed to make writing assertions in tests more readable and maintainable.',
 		logo: Assets.Strikt,
 		name: 'Strikt',
 		category: 'test'
@@ -357,6 +425,238 @@ export const items = [
 		logo: Assets.Strapi,
 		name: 'Strapi',
 		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'git',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Git',
+		category: 'version-control'
+	}),
+	defineSkill({
+		slug: 'svn',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Subversion',
+		category: 'version-control'
+	}),
+	defineSkill({
+		slug: 'mercurial',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Mercurial',
+		category: 'version-control'
+	}),
+	defineSkill({
+		slug: 'mvc',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'MVC',
+		category: 'pattern'
+	}),
+	defineSkill({
+		slug: 'mvvm',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'MVVM',
+		category: 'pattern'
+	}),
+	defineSkill({
+		slug: 'mvp',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'MVP',
+		category: 'pattern'
+	}),
+	defineSkill({
+		slug: 'viper',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'VIPER',
+		category: 'pattern'
+	}),
+	defineSkill({
+		slug: 'wifi',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'WiFi',
+		category: 'hardware'
+	}),
+	defineSkill({
+		slug: 'bluetooth',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Bluetooth',
+		category: 'hardware'
+	}),
+	defineSkill({
+		slug: 'gps',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'GPS',
+		category: 'hardware'
+	}),
+	defineSkill({
+		slug: 'nfc',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'NFC',
+		category: 'hardware'
+	}),
+	defineSkill({
+		slug: 'audio',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Audio',
+		category: 'hardware'
+	}),
+	defineSkill({
+		slug: 'rest',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'REST',
+		category: 'api'
+	}),
+	defineSkill({
+		slug: 'odata',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'OData',
+		category: 'api'
+	}),
+	defineSkill({
+		slug: 'soap',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'SOAP',
+		category: 'api'
+	}),
+	defineSkill({
+		slug: 'graphql',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'GraphQL',
+		category: 'api'
+	}),
+	defineSkill({
+		slug: 'ktlint',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'KTLint',
+		category: 'api'
+	}),
+	defineSkill({
+		slug: 'swiftlint',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'SwiftLint',
+		category: 'api'
+	}),
+	defineSkill({
+		slug: 'jira',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Jira',
+		category: 'projman'
+	}),
+	defineSkill({
+		slug: 'azure-devops',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Azure DevOps',
+		category: 'projman'
+	}),
+	defineSkill({
+		slug: 'clickup',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'ClickUp',
+		category: 'projman'
+	}),
+	defineSkill({
+		slug: 'asana',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Asana',
+		category: 'projman'
+	}),
+	defineSkill({
+		slug: 'trello',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Trello',
+		category: 'projman'
+	}),
+	defineSkill({
+		slug: 'redmine',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Redmine',
+		category: 'projman'
+	}),
+	defineSkill({
+		slug: 'azure',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Microsoft Azure',
+		category: 'cloud'
+	}),
+	defineSkill({
+		slug: 'gcloud',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Google Cloud',
+		category: 'cloud'
+	}),
+	defineSkill({
+		slug: 'aws',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'AWS',
+		category: 'cloud'
+	}),
+	defineSkill({
+		slug: 'heroku',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'Heroku',
+		category: 'cloud'
+	}),
+	defineSkill({
+		slug: 'ghpages',
+		color: 'blue',
+		description: '',
+		logo: '',
+		name: 'GitHub Pages',
+		category: 'cloud'
 	})
 ] as const;
 
