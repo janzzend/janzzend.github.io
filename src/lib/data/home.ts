@@ -41,4 +41,4 @@ export const links: Array<{ platform: Platform; link: string }> = [
 	},
 ];
 
-export const skills = getSkills('swift', 'kotlin', 'java', 'android', 'ios');
+export const skills = getSkills('swift', 'kotlin', 'objc', 'java', 'android', 'ios');

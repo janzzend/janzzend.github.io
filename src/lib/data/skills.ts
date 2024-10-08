@@ -560,7 +560,7 @@ export const items = [
 		description: '',
 		logo: '',
 		name: 'KTLint',
-		category: 'api'
+		category: 'lint'
 	}),
 	defineSkill({
 		slug: 'swiftlint',
@@ -568,7 +568,7 @@ export const items = [
 		description: '',
 		logo: '',
 		name: 'SwiftLint',
-		category: 'api'
+		category: 'lint'
 	}),
 	defineSkill({
 		slug: 'jira',
