@@ -51,14 +51,6 @@ export const items = [
 		category: 'progress'
 	}),
 	defineSkill({
-		slug: 'flutter',
-		color: 'blue',
-		description: 'Flutter is an open-source UI software development kit by Google, used to build natively compiled applications for mobile, web, and desktop from a single codebase using the Dart programming language.',
-		logo: Assets.Flutter,
-		name: 'Flutter',
-		category: 'progress'
-	}),
-	defineSkill({
 		slug: 'ios',
 		color: 'white',
 		description: 'Apple’s mobile operating system, powering iPhone and iPad devices. It is known for its strong security, smooth user experience, and tight integration with other Apple products.',
