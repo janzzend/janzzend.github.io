@@ -521,25 +521,6 @@ const items: Array<Project> = [
 		]
 	},
 	{
-		slug: 'task-it',
-		color: 'blue',
-		description: 'An internal iOS app allowing users to record audio and video with notes and send them for remote task management.',
-		shortDescription: 'Task management app with audio and video recording.',
-		links: [],
-		logo: Assets.TaskIt,
-		name: 'Image Property Task It',
-		period: { from: new Date(2016, 7, 1) },
-		skills: getSkills('ios', 'swift'),
-		type: 'Real Estate Organizer App',
-		screenshots: [
-			{ label: 'Splash', src: 'https://apps.cloudstaff.com/assets/contents/31/image1532406169.png' },
-			{ label: 'Auth', src: 'https://apps.cloudstaff.com/assets/contents/31/image1532406172.png' },
-			{ label: 'Create', src: 'https://apps.cloudstaff.com/assets/contents/31/image1532406174.png' },
-			{ label: 'Main', src: 'https://apps.cloudstaff.com/assets/contents/31/image1532406177.png' },
-			{ label: 'Features', src: 'https://apps.cloudstaff.com/assets/contents/31/image1532406179.png' }
-		]
-	},
-	{
 		slug: 'specialtyiq-rxprecheck-module',
 		color: 'blue',
 		description: 'A specialty drug management web application that streamlines the drug prescription and validation process.',

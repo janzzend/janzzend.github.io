@@ -91,7 +91,15 @@ const items = [
 		description: 'Kotlin Multi Platform (KMP) is a feature of Kotlin that allows developers to write code that runs on multiple platforms, including iOS, Android, and the web, sharing common business logic while maintaining platform-specific code for UI and APIs.',
 		logo: Assets.KMP,
 		name: 'Kotlin Multi Platform',
-		category: 'progress'
+		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'tca',
+		color: 'purple',
+		description: 'The Composable Architecture (TCA) is a library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind. It is commonly used in Swift/SwiftUI development for state management and side effects.',
+		logo: Assets.Unknown,
+		name: 'TCA',
+		category: 'framework'
 	}),
 	defineSkill({
 		slug: 'ios',
@@ -262,6 +270,14 @@ const items = [
 		category: 'devops'
 	}),
 	defineSkill({
+		slug: 'ghactions',
+		color: 'gray',
+		description: 'GitHub Actions is a CI/CD platform that allows you to automate your build, test, and deployment pipeline directly from your GitHub repository.',
+		logo: Assets.Unknown,
+		name: 'GitHub Actions',
+		category: 'devops'
+	}),
+	defineSkill({
 		slug: 'firebase',
 		color: 'yellow',
 		description: 'A platform developed by Google for creating mobile and web applications, offering services such as database management, authentication, and analytics.',
@@ -358,6 +374,22 @@ const items = [
 		category: 'test'
 	}),
 	defineSkill({
+		slug: 'swifttesting',
+		color: 'orange',
+		description: 'A modern testing framework by Apple for Swift, providing expressive APIs for writing unit tests with improved syntax and better integration with Swift language features.',
+		logo: Assets.Unknown,
+		name: 'Swift Testing',
+		category: 'test'
+	}),
+	defineSkill({
+		slug: 'snapshottesting',
+		color: 'purple',
+		description: 'A testing technique that captures the rendered output of UI components and compares them against stored reference images to detect visual regressions.',
+		logo: Assets.Unknown,
+		name: 'Snapshot Testing',
+		category: 'test'
+	}),
+	defineSkill({
 		slug: 'coredata',
 		color: 'blue',
 		description: 'A persistence framework by Apple that allows developers to manage and store data locally in iOS, macOS, watchOS, and tvOS apps using an object graph management approach.',
@@ -395,6 +427,14 @@ const items = [
 		description: 'An open-source relational database management system (RDBMS), widely used for web applications, known for its speed, reliability, and ease of use.',
 		logo: Assets.MySQL,
 		name: 'MySQL',
+		category: 'db'
+	}),
+	defineSkill({
+		slug: 'sqlite',
+		color: 'blue',
+		description: 'A lightweight, serverless, self-contained SQL database engine. SQLite is widely used in mobile applications for local data storage due to its simplicity and reliability.',
+		logo: Assets.Unknown,
+		name: 'SQLite',
 		category: 'db'
 	}),
 	defineSkill({
@@ -603,6 +643,22 @@ const items = [
 		description: 'A tool to enforce Swift style and conventions.',
 		logo: Assets.Unknown,
 		name: 'SwiftLint',
+		category: 'lint'
+	}),
+	defineSkill({
+		slug: 'swiftformat',
+		color: 'orange',
+		description: 'A code formatting tool for Swift that automatically reformats Swift code to follow style guidelines.',
+		logo: Assets.Unknown,
+		name: 'SwiftFormat',
+		category: 'lint'
+	}),
+	defineSkill({
+		slug: 'spotless',
+		color: 'green',
+		description: 'A general-purpose code formatter for Kotlin, Java, and other languages. Commonly used in Android projects to enforce consistent code style.',
+		logo: Assets.Unknown,
+		name: 'Spotless',
 		category: 'lint'
 	}),
 	defineSkill({
