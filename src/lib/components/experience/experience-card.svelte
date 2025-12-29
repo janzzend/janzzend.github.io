@@ -16,11 +16,9 @@
 
 	const { it }: { it: Experience } = $props();
 
-	const exactDuration = computeExactDuration(it.period.from, it.period.to);
-
+	let exactDuration = $derived(computeExactDuration(it.period.from, it.period.to));
 	let from = $derived(getMonthAndYear(it.period.from));
 	let to = $derived(getMonthAndYear(it.period.to));
-
 	let period = $derived(`${from} - ${to}`);
 
 	let badges = $derived([

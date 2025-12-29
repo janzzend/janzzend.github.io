@@ -29,6 +29,12 @@ export default defineConfig({
 		'i-carbon-at',
 		'i-carbon-overflow-menu-horizontal',
 		'i-carbon-logo-youtube',
+		// Card icons
+		'i-carbon-time',
+		'i-carbon-building',
+		'i-carbon-hourglass',
+		'i-carbon-calendar',
+		'i-carbon-location',
 		// Other commonly used icons
 		'i-carbon-arrow-left',
 		'i-carbon-arrow-right',
@@ -37,8 +43,6 @@ export default defineConfig({
 		'i-carbon-close',
 		'i-carbon-link',
 		'i-carbon-launch',
-		'i-carbon-calendar',
-		'i-carbon-location',
 		'i-carbon-user',
 		'i-carbon-email',
 		'i-carbon-phone'

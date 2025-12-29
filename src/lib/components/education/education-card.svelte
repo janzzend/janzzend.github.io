@@ -15,14 +15,11 @@
 
 	const { it }: { it: Education } = $props();
 
-	const exactDuration = computeExactDuration(it.period.from, it.period.to);
-
+	let exactDuration = $derived(computeExactDuration(it.period.from, it.period.to));
 	let from = $derived(getMonthAndYear(it.period.from));
 	let to = $derived(getMonthAndYear(it.period.to));
-
 	let period = $derived(`${from} - ${to}`);
-
-	let location = `${it.organization}, ${it.location}`;
+	let location = $derived(`${it.organization}, ${it.location}`);
 </script>
 
 <FancyCard href={href(`/education/${it.slug}`)}>
