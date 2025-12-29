@@ -23,7 +23,7 @@
 		"@types/eslint": "^9.6.0",
 		"@types/prismjs": "^1.26.5",
 		"autoprefixer": "^10.4.20",
-		"bits-ui": "^2.14.4",
+		"bits-ui": "^0.21.16",
 		"clsx": "^2.1.1",
 		"dompurify": "^3.2.1",
 		"embla-carousel-svelte": "^8.4.0",
@@ -51,5 +51,16 @@
 		"typescript-eslint": "^8.0.0",
 		"unocss": "^66.5.2",
 		"vite": "^7.1.9"
+	},
+	"overrides": {
+		"bits-ui": {
+			"svelte": "$svelte"
+		},
+		"svelte-sonner": {
+			"svelte": "$svelte"
+		},
+		"mode-watcher": {
+			"svelte": "$svelte"
+		}
 	}
 }
