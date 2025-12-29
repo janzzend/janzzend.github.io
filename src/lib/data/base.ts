@@ -1,6 +1,6 @@
 const firstName = 'Janzzen Matthew';
 const lastName = 'De Jesus';
-const suffix = 'Mobile Engineer Portfolio';
+const suffix = 'Mobile Engineer';
 
 const BaseData = {
 	firstName,
