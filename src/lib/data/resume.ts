@@ -1,3 +1,9 @@
-export const data = 'https://drive.google.com/file/d/1gW9o9hG3pzH9BDOL316gBsT6LZWkwpg6/view';
+import { href } from '$lib/utils';
 
-export const title = 'Resumé';
+const title = 'Resumé';
+
+const resume = href('/pdf/resume.pdf');
+
+const ResumeData = { title, resume };
+
+export default ResumeData;

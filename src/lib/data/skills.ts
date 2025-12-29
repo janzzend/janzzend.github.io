@@ -1,7 +1,7 @@
+import type { Skill, SkillCategory } from './types';
+import type { StringWithAutoComplete } from '@riadh-adrani/utils';
+import { omit } from '@riadh-adrani/utils';
 import Assets from './assets';
-import type { Skill, SkillCategory } from '../types';
-//import svelte from '../md/svelte.md?raw';
-import { omit, type StringWithAutoComplete } from '@riadh-adrani/utils';
 
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
@@ -41,7 +41,50 @@ const defineSkill = <S extends string>(
 	return out;
 };
 
-export const items = [
+export const getSkills = (
+	...slugs: Array<StringWithAutoComplete<(typeof items)[number]['slug']>>
+): Array<Skill> => {
+	return items.filter((it) => (slugs.length === 0 ? true : slugs.includes(it.slug)));
+};
+
+export const groupByCategory = (
+	query: string
+): Array<{ category: SkillCategory; items: Array<Skill> }> => {
+	const out: ReturnType<typeof groupByCategory> = [];
+
+	const others: Array<Skill> = [];
+
+	items.forEach((item) => {
+		if (query.trim() && !item.name.toLowerCase().includes(query.trim().toLowerCase())) return;
+
+		// push to others if item does not have a category
+		if (!item.category) {
+			others.push(item);
+			return;
+		}
+
+		// check if category exists
+		let category = out.find((it) => it.category.slug === item.category?.slug);
+
+		if (!category) {
+			category = { items: [], category: item.category };
+
+			out.push(category);
+		}
+
+		category.items.push(item);
+	});
+
+	if (others.length !== 0) {
+		out.push({ category: { name: 'Others', slug: 'others' }, items: others });
+	}
+
+	return out;
+};
+
+const title = 'Skills';
+
+const items = [
 	defineSkill({
 		slug: 'kmp',
 		color: 'orange',
@@ -53,7 +96,7 @@ export const items = [
 	defineSkill({
 		slug: 'ios',
 		color: 'white',
-		description: 'Apple’s mobile operating system, powering iPhone and iPad devices. It is known for its strong security, smooth user experience, and tight integration with other Apple products.',
+		description: 'Apple\'s mobile operating system, powering iPhone and iPad devices. It is known for its strong security, smooth user experience, and tight integration with other Apple products.',
 		logo: Assets.Apple,
 		name: 'iOS',
 		category: 'platform'
@@ -61,7 +104,7 @@ export const items = [
 	defineSkill({
 		slug: 'android',
 		color: 'green',
-		description: 'Google’s mobile operating system, used on a wide range of devices. Android is known for its flexibility, customization, and large user base.',
+		description: 'Google\'s mobile operating system, used on a wide range of devices. Android is known for its flexibility, customization, and large user base.',
 		logo: Assets.Android,
 		name: 'Android',
 		category: 'platform'
@@ -69,7 +112,7 @@ export const items = [
 	defineSkill({
 		slug: 'wearos',
 		color: 'yellow',
-		description: 'Google’s operating system designed for wearable devices like smartwatches, offering app integration and fitness tracking features.',
+		description: 'Google\'s operating system designed for wearable devices like smartwatches, offering app integration and fitness tracking features.',
 		logo: Assets.WearOS,
 		name: 'Wear OS',
 		category: 'platform'
@@ -77,7 +120,7 @@ export const items = [
 	defineSkill({
 		slug: 'watchos',
 		color: 'yellow',
-		description: 'Apple’s operating system for the Apple Watch, offering fitness tracking, notifications, and seamless integration with iOS devices.',
+		description: 'Apple\'s operating system for the Apple Watch, offering fitness tracking, notifications, and seamless integration with iOS devices.',
 		logo: Assets.WatchOS,
 		name: 'Watch OS',
 		category: 'platform'
@@ -164,7 +207,7 @@ export const items = [
 	}),
 	defineSkill({
 		slug: 'javascript',
-		color: 'blue',
+		color: 'yellow',
 		description: 'A high-level, dynamic scripting language, primarily used for creating interactive web applications and front-end development.',
 		logo: Assets.JavaScript,
 		name: 'JavaScript',
@@ -173,7 +216,7 @@ export const items = [
 	defineSkill({
 		slug: 'xcode',
 		color: 'blue',
-		description: 'Apple’s integrated development environment (IDE) for macOS, used to develop software for iOS, macOS, watchOS, and tvOS.',
+		description: 'Apple\'s integrated development environment (IDE) for macOS, used to develop software for iOS, macOS, watchOS, and tvOS.',
 		logo: Assets.Xcode,
 		name: 'Xcode',
 		category: 'devtools'
@@ -181,7 +224,7 @@ export const items = [
 	defineSkill({
 		slug: 'studio',
 		color: 'green',
-		description: 'Google’s official IDE for Android app development, offering powerful tools and extensive integration for mobile developers.',
+		description: 'Google\'s official IDE for Android app development, offering powerful tools and extensive integration for mobile developers.',
 		logo: Assets.AndroidStudio,
 		name: 'Android Studio',
 		category: 'devtools'
@@ -261,32 +304,32 @@ export const items = [
 	defineSkill({
 		slug: 'signalr',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'A library for ASP.NET that makes it incredibly simple to add real-time web functionality to applications.',
+		logo: Assets.Unknown,
 		name: 'SignalR',
 		category: 'integration'
 	}),
 	defineSkill({
 		slug: 'actioncable',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'red',
+		description: 'A Ruby on Rails framework for integrating WebSockets with Ruby on Rails applications.',
+		logo: Assets.Unknown,
 		name: 'Action Cable',
 		category: 'integration'
 	}),
 	defineSkill({
 		slug: 'pusher',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'A hosted service that makes it easy to add real-time data and functionality to web and mobile applications.',
+		logo: Assets.Unknown,
 		name: 'Pusher',
 		category: 'integration'
 	}),
 	defineSkill({
 		slug: 'ganalytics',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'orange',
+		description: 'A web analytics service offered by Google that tracks and reports website traffic.',
+		logo: Assets.Unknown,
 		name: 'Google Analytics',
 		category: 'analytics'
 	}),
@@ -420,275 +463,233 @@ export const items = [
 	}),
 	defineSkill({
 		slug: 'git',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'orange',
+		description: 'A distributed version control system for tracking changes in source code during software development.',
+		logo: Assets.Unknown,
 		name: 'Git',
 		category: 'version-control'
 	}),
 	defineSkill({
 		slug: 'svn',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'A centralized version control system for managing and tracking changes in source code.',
+		logo: Assets.Unknown,
 		name: 'Subversion',
 		category: 'version-control'
 	}),
 	defineSkill({
 		slug: 'mercurial',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'gray',
+		description: 'A distributed version control system designed for efficient handling of projects of any size.',
+		logo: Assets.Unknown,
 		name: 'Mercurial',
 		category: 'version-control'
 	}),
 	defineSkill({
 		slug: 'mvc',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Model-View-Controller architecture pattern that separates application logic into three interconnected components.',
+		logo: Assets.Unknown,
 		name: 'MVC',
 		category: 'pattern'
 	}),
 	defineSkill({
 		slug: 'mvvm',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'purple',
+		description: 'Model-View-ViewModel architecture pattern commonly used in mobile development to separate business logic from UI.',
+		logo: Assets.Unknown,
 		name: 'MVVM',
 		category: 'pattern'
 	}),
 	defineSkill({
 		slug: 'mvp',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'green',
+		description: 'Model-View-Presenter architecture pattern that facilitates separation of concerns in application development.',
+		logo: Assets.Unknown,
 		name: 'MVP',
 		category: 'pattern'
 	}),
 	defineSkill({
 		slug: 'viper',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'orange',
+		description: 'View-Interactor-Presenter-Entity-Router architecture pattern commonly used in iOS development for clean architecture.',
+		logo: Assets.Unknown,
 		name: 'VIPER',
 		category: 'pattern'
 	}),
 	defineSkill({
 		slug: 'wifi',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Wireless networking technology for connecting devices and enabling data communication.',
+		logo: Assets.Unknown,
 		name: 'WiFi',
 		category: 'hardware'
 	}),
 	defineSkill({
 		slug: 'bluetooth',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Wireless technology standard for exchanging data over short distances between devices.',
+		logo: Assets.Unknown,
 		name: 'Bluetooth',
 		category: 'hardware'
 	}),
 	defineSkill({
 		slug: 'gps',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'green',
+		description: 'Global Positioning System for satellite-based navigation and location tracking.',
+		logo: Assets.Unknown,
 		name: 'GPS',
 		category: 'hardware'
 	}),
 	defineSkill({
 		slug: 'nfc',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Near Field Communication technology for short-range wireless communication between devices.',
+		logo: Assets.Unknown,
 		name: 'NFC',
 		category: 'hardware'
 	}),
 	defineSkill({
 		slug: 'audio',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'purple',
+		description: 'Audio processing and integration in mobile applications.',
+		logo: Assets.Unknown,
 		name: 'Audio',
 		category: 'hardware'
 	}),
 	defineSkill({
 		slug: 'rest',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'green',
+		description: 'Representational State Transfer architectural style for designing networked applications.',
+		logo: Assets.Unknown,
 		name: 'REST',
 		category: 'api'
 	}),
 	defineSkill({
 		slug: 'odata',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Open Data Protocol for building and consuming RESTful APIs.',
+		logo: Assets.Unknown,
 		name: 'OData',
 		category: 'api'
 	}),
 	defineSkill({
 		slug: 'soap',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Simple Object Access Protocol for exchanging structured information in web services.',
+		logo: Assets.Unknown,
 		name: 'SOAP',
 		category: 'api'
 	}),
 	defineSkill({
 		slug: 'graphql',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'pink',
+		description: 'A query language for APIs and a runtime for executing those queries with your existing data.',
+		logo: Assets.Unknown,
 		name: 'GraphQL',
 		category: 'api'
 	}),
 	defineSkill({
 		slug: 'ktlint',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'purple',
+		description: 'An anti-bikeshedding Kotlin linter with built-in formatter.',
+		logo: Assets.Unknown,
 		name: 'KTLint',
 		category: 'lint'
 	}),
 	defineSkill({
 		slug: 'swiftlint',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'orange',
+		description: 'A tool to enforce Swift style and conventions.',
+		logo: Assets.Unknown,
 		name: 'SwiftLint',
 		category: 'lint'
 	}),
 	defineSkill({
 		slug: 'jira',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'A project management tool for agile teams to plan, track, and manage work.',
+		logo: Assets.Unknown,
 		name: 'Jira',
 		category: 'projman'
 	}),
 	defineSkill({
-		slug: 'azure-devops',
-		color: 'blue',
-		description: '',
-		logo: '',
-		name: 'Azure DevOps',
-		category: 'projman'
-	}),
-	defineSkill({
 		slug: 'clickup',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'purple',
+		description: 'A productivity platform for teams to manage projects, tasks, and workflow.',
+		logo: Assets.Unknown,
 		name: 'ClickUp',
 		category: 'projman'
 	}),
 	defineSkill({
 		slug: 'asana',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'coral',
+		description: 'A web and mobile application designed to help teams organize, track, and manage their work.',
+		logo: Assets.Unknown,
 		name: 'Asana',
 		category: 'projman'
 	}),
 	defineSkill({
 		slug: 'trello',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'A visual collaboration tool that creates a shared perspective on any project.',
+		logo: Assets.Unknown,
 		name: 'Trello',
 		category: 'projman'
 	}),
 	defineSkill({
 		slug: 'redmine',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'red',
+		description: 'A flexible project management web application.',
+		logo: Assets.Unknown,
 		name: 'Redmine',
 		category: 'projman'
 	}),
 	defineSkill({
 		slug: 'azure',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Microsoft\'s cloud computing service for building, testing, deploying, and managing applications.',
+		logo: Assets.Azure,
 		name: 'Microsoft Azure',
 		category: 'cloud'
 	}),
 	defineSkill({
 		slug: 'gcloud',
 		color: 'blue',
-		description: '',
-		logo: '',
+		description: 'Google\'s suite of cloud computing services.',
+		logo: Assets.Unknown,
 		name: 'Google Cloud',
 		category: 'cloud'
 	}),
 	defineSkill({
 		slug: 'aws',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'orange',
+		description: 'Amazon\'s comprehensive cloud computing platform.',
+		logo: Assets.AWS,
 		name: 'AWS',
 		category: 'cloud'
 	}),
 	defineSkill({
 		slug: 'heroku',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'purple',
+		description: 'A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.',
+		logo: Assets.Unknown,
 		name: 'Heroku',
 		category: 'cloud'
 	}),
 	defineSkill({
 		slug: 'ghpages',
-		color: 'blue',
-		description: '',
-		logo: '',
+		color: 'gray',
+		description: 'A static site hosting service from GitHub.',
+		logo: Assets.Unknown,
 		name: 'GitHub Pages',
 		category: 'cloud'
 	})
 ] as const;
 
-export const title = 'Skills';
-
-export const getSkills = (
-	...slugs: Array<StringWithAutoComplete<(typeof items)[number]['slug']>>
-): Array<Skill> => items.filter((it) => slugs.includes(it.slug));
-
-export const groupByCategory = (
-	query: string
-): Array<{ category: SkillCategory; items: Array<Skill> }> => {
-	const out: ReturnType<typeof groupByCategory> = [];
-
-	const others: Array<Skill> = [];
-
-	items.forEach((item) => {
-		if (query.trim() && !item.name.toLowerCase().includes(query.trim().toLowerCase())) return;
-
-		// push to others if item does not have a category
-		if (!item.category) {
-			others.push(item);
-			return;
-		}
-
-		// check if category exists
-		let category = out.find((it) => it.category.slug === item.category?.slug);
-
-		if (!category) {
-			category = { items: [], category: item.category };
-
-			out.push(category);
-		}
-
-		category.items.push(item);
-	});
-
-	if (others.length !== 0) {
-		out.push({ category: { name: 'Others', slug: 'others' }, items: others });
-	}
-
-	return out;
+const SkillsData = {
+	title,
+	items
 };
+
+export default SkillsData;

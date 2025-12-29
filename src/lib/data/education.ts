@@ -1,19 +1,27 @@
 import Assets from './assets';
-import type { Education } from '../types';
+import type { Education } from './types';
 
-export const items: Array<Education> = [
+const title = 'Education';
+
+const items: Array<Education> = [
 	{
 		degree: 'Bachelor of Science in Computer Science',
-		description: '',
+		description: 'Completed a comprehensive program in computer science fundamentals, software development, and system design.',
 		location: 'Angeles, Philippines',
 		logo: Assets.CCA,
 		name: '',
 		organization: 'City College of Angeles',
-		period: { from: new Date(2012, 5, 1), to: new Date(2016, 5, 0) },
-		shortDescription: '',
+		period: { from: new Date(2012, 5, 1), to: new Date(2016, 5, 1) },
+		shortDescription: 'Bachelor of Science in Computer Science',
 		slug: 'cca',
-		subjects: ['Dean\'s Lister', 'Special Citation for Outstanding Research Output']
+		subjects: [
+			"Dean's Lister [1st and 2nd Semester, 2012 - 2013]",
+			"Dean's Lister [1st Semester, 2015 - 2016]",
+			'Special Citation for Outstanding Research Output'
+		]
 	}
 ];
 
-export const title = 'Education';
+const EducationData = { title, items };
+
+export default EducationData;

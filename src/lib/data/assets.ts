@@ -1,154 +1,132 @@
-import type { Asset } from '$lib/types';
-import { theme } from '$lib/stores/theme';
 import { base } from '$app/paths';
 
-const gh = (file: string) => `${base}/logos/${file}`;
+const url = (file: string) => `${base}/logos/${file}`;
 
-const a = (light: string, dark?: string): Asset =>
-	dark ? { dark: gh(dark), light: gh(light) } : gh(light);
+const asset = (lightFilename: string, darkFilename = lightFilename) => {
+	return { light: url(lightFilename), dark: url(darkFilename) };
+};
 
 const Assets = {
-	Apple: a('apple.png', 'apple-dark.png'),
-	Swift: a('swift.svg'),
-	AWS: a('aws.svg'),
-	Bootstrap: a('bootstrap.svg'),
-	C: a('c.svg'),
-	Cpp: a('cpp.svg'),
-	Celery: a('celery.svg'),
-	Django: a('django.svg'),
-	FastApi: a('fastapi'),
-	Flask: a('flask.svg'),
-	Go: a('go.svg'),
-	Kafka: a('kafka.svg'),
-	Neo4j: a('neo4j.svg'),
-	Nginx: a('nginx.svg'),
-	Numpy: a('numpy.svg'),
-	Pandas: a('pandas.svg'),
-	RabbitMQ: a('rabbitmq.svg'),
-	Rust: a('rust.svg'),
-	Scrapy: a('scrapy.png'),
-	Selenium: a('selenium.svg'),
-	Docker: a('docker.svg'),
-	Kubernetes: a('kubernetes.svg'),
-	Csharp: a('csharp.svg'),
-	Xamarin: a('xamarin.svg'),
-	TypeScript: a('ts.png'),
-	VueJs: a('vue.png'),
-	ReactJs: a('react.svg'),
-	Dart: a('dart.png'),
-	Kotlin: a('kotlin.svg'),
-	Python: a('python.png'),
-	NodeJs: a('node.png'),
-	Deno: a('deno.png', 'deno-dark.png'),
-	Svelte: a('svelte.png'),
-	ExpressJs: a('express.png'),
-	JavaScript: a('js.png'),
-	Fastify: a('fastify.svg', 'fastify-dark.png'),
-	NestJs: a('nest.svg'),
-	Quasar: a('quasar.svg'),
-	SolidJs: a('solid.svg'),
-	Electron: a('electron.png'),
-	Flutter: a('flutter.svg'),
-	Java: a('java.png'),
-	AdonisJs: a('adonis.png'),
-	Android: a('android.png'),
-	Angular: a('angular.png'),
-	PostgreSQL: a('postgres.png'),
-	Firebase: a('firebase.png'),
-	Sass: a('sass.png'),
-	Unknown: a('no-img.svg'),
-	MongoDB: a('mongodb.svg'),
-	Redis: a('redis.svg'),
-	Tailwind: a('tailwind.svg'),
-	HTML: a('html.svg'),
-	Premiere: a('premiere.svg'),
-	Photoshop: a('photoshop.svg'),
-	CSS: a('css.svg'),
-	AfterEffects: a('after-effects.svg'),
-	Illustrator: a('illustrator.svg'),
-	Nuxt: a('nuxt.png'),
-	Vite: a('vite.png'),
-	Vitest: a('vitest.svg'),
-	Jest: a('jest.png'),
-	Unocss: a('unocss.svg'),
-	Ruvy: a('ruvy.svg'),
-	Postcss: a('postcss.svg'),
-	Cloudstaff: a('cloudstaff.png'),
-	FilAm: a('filam.jpg'),
-	TenEighty: a('1080agile.jpeg'),
-	Chairseven: a('chairseven.png'),
-	Peregrine: a('peregrine.jpeg'),
-	Chowis: a('chowis.jpeg'),
-	DailyPress: a('dailypress.jpeg'),
-	Aloware: a('aloware.jpeg'),
-	SCSI: a('scsi.jpeg'),
-	Sourcepass: a('sourcepass.jpeg'),
-	CCA: a('cca.jpeg'),
-	SpecialtyIQ: a('specialtyiq.png'),
-	PHP: a('php.svg'),
-	WearOS: a('wearos.png'),
-	WatchOS: a('watchos.png'),
-	VBNet: a('vbnet.png'),
-	ASP: a('asp.png'),
-	Cake: a('cake.png'),
-	Strapi: a('strapi.png'),
-	Twilio: a('twilio.png'),
-	Stripe: a('stripe.svg'),
-	Judo: a('judo.png'),
-	Zapier: a('zapier.svg'),
-	Figma: a('figma.png'),
-	XD: a('xd.png'),
-	VSCode: a('vscode.png'),
-	Intellij: a('intellij.png'),
-	AndroidStudio: a('android-studio.png'),
-	Xcode: a('xcode.png'),
-	XcodeCloud: a('xcode-cloud.png'),
-	Azure: a('azure.svg'),
-	XML: a('xml.png'),
-	Compose: a('compose.png'),
-	SwiftUI: a('swiftui.png'),
-	Gainsight: a('gainsight.png'),
-	MySQL: a('mysql.svg'),
-	MSSQL: a('mssql.png'),
-	Room: a('room.svg'),
-	Realm: a('realm.png'),
-	CoreData: a('coredata.png'),
-	XCTest: a('xctest.png'),
-	Strikt: a('strikt.png'),
-	Quest: a('quest.webp'),
-	SafeTTag: a('safettag.webp'),
-	Talk2: a('aloware.webp'),
-	TouchFooty: a('touchfooty.webp'),
-	CEX: a('cex.webp'),
-	Canterbury: a('canterbury.webp'),
-	Cronulla: a('cronulla.webp'),
-	DWSecurity: a('dwsec.webp'),
-	DWTech: a('dwtech.webp'),
-	DBHair: a('dbhair.webp'),
-	DBSkin: a('dbskin.webp'),
-	Portgrace: a('portgrace.webp'),
-	PortgraceLeader: a('portgrace-leader.webp'),
-	GoEC: a('goec.jpeg'),
-	Amore: a('amore.webp'),
-	Rewards: a('rewards.webp'),
-	StaffCentral: a('staffcentral.webp'),
-	Tap: a('tap.webp'),
-	Botley: a('botley.webp'),
-	Buzz: a('buzz.webp'),
-	Meetup: a('meetup.webp'),
-	Chat: a('chat.webp'),
-	TaskIt: a('taskit.webp'),
-	HCM: a('hcm.webp'),
-	KMP: a('kmp.png'),
-	ObjC: a('objc.png')
+	// Platforms
+	Apple: asset('apple.png', 'apple-dark.png'),
+	Android: asset('android.png'),
+	WearOS: asset('wearos.png'),
+	WatchOS: asset('watchos.png'),
+	
+	// Programming Languages
+	Swift: asset('swift.svg'),
+	SwiftUI: asset('swiftui.png'),
+	ObjC: asset('objc.png'),
+	Kotlin: asset('kotlin.svg'),
+	Compose: asset('compose.png'),
+	Java: asset('java.png'),
+	Python: asset('python.png'),
+	PHP: asset('php.svg'),
+	Csharp: asset('csharp.svg'),
+	VBNet: asset('vbnet.png'),
+	JavaScript: asset('js.png'),
+	TypeScript: asset('ts.png'),
+	KMP: asset('kmp.png'),
+	
+	// Dev Tools
+	Xcode: asset('xcode.png'),
+	XcodeCloud: asset('xcode-cloud.png'),
+	AndroidStudio: asset('android-studio.png'),
+	Intellij: asset('intellij.png'),
+	VSCode: asset('vscode.png'),
+	
+	// DevOps
+	Azure: asset('azure.svg'),
+	
+	// Integrations
+	Firebase: asset('firebase.png'),
+	Stripe: asset('stripe.svg'),
+	Judo: asset('judo.png'),
+	Twilio: asset('twilio.png'),
+	Zapier: asset('zapier.svg'),
+	
+	// Analytics
+	Gainsight: asset('gainsight.png'),
+	
+	// Testing
+	XCTest: asset('xctest.png'),
+	Strikt: asset('strikt.png'),
+	
+	// Databases
+	CoreData: asset('coredata.png'),
+	Room: asset('room.svg'),
+	Realm: asset('realm.png'),
+	MSSQL: asset('mssql.png'),
+	MySQL: asset('mysql.svg'),
+	MongoDB: asset('mongodb.svg'),
+	PostgreSQL: asset('postgres.png'),
+	Redis: asset('redis.svg'),
+	
+	// Markup & Style
+	XML: asset('xml.png'),
+	HTML: asset('html.svg'),
+	CSS: asset('css.svg'),
+	
+	// Design
+	Figma: asset('figma.png'),
+	XD: asset('xd.png'),
+	
+	// Frameworks
+	ASP: asset('asp.png'),
+	Cake: asset('cake.png'),
+	Strapi: asset('strapi.png'),
+	
+	// Others
+	AWS: asset('aws.svg'),
+	Docker: asset('docker.svg'),
+	Kubernetes: asset('kubernetes.svg'),
+	Svelte: asset('svelte.svg'),
+	ReactJs: asset('react.svg'),
+	VueJs: asset('vue.png'),
+	Tailwind: asset('tailwind.svg'),
+	Sass: asset('sass.png'),
+	NodeJs: asset('node.png'),
+	Unknown: asset('no-img.svg'),
+	
+	// Company Logos
+	Cloudstaff: asset('cloudstaff.png'),
+	FilAm: asset('filam.jpg'),
+	TenEighty: asset('1080agile.jpeg'),
+	Chairseven: asset('chairseven.png'),
+	Peregrine: asset('peregrine.jpeg'),
+	Chowis: asset('chowis.jpeg'),
+	DailyPress: asset('dailypress.jpeg'),
+	Aloware: asset('aloware.jpeg'),
+	SCSI: asset('scsi.jpeg'),
+	Sourcepass: asset('sourcepass.jpeg'),
+	CCA: asset('cca.jpeg'),
+	
+	// Project Logos
+	SpecialtyIQ: asset('specialtyiq.png'),
+	Quest: asset('quest.webp'),
+	SafeTTag: asset('safettag.webp'),
+	Talk2: asset('aloware.webp'),
+	TouchFooty: asset('touchfooty.webp'),
+	CEX: asset('cex.webp'),
+	Canterbury: asset('canterbury.webp'),
+	Cronulla: asset('cronulla.webp'),
+	DWSecurity: asset('dwsec.webp'),
+	DWTech: asset('dwtech.webp'),
+	DBHair: asset('dbhair.webp'),
+	DBSkin: asset('dbskin.webp'),
+	Portgrace: asset('portgrace.webp'),
+	PortgraceLeader: asset('portgrace-leader.webp'),
+	GoEC: asset('goec.jpeg'),
+	Amore: asset('amore.webp'),
+	Rewards: asset('rewards.webp'),
+	StaffCentral: asset('staffcentral.webp'),
+	Tap: asset('tap.webp'),
+	Botley: asset('botley.webp'),
+	Buzz: asset('buzz.webp'),
+	Meetup: asset('meetup.webp'),
+	Chat: asset('chat.webp'),
+	TaskIt: asset('taskit.webp'),
+	HCM: asset('hcm.webp')
 };
 
 export default Assets;
-
-let currentTheme: boolean;
-
-theme.subscribe((v) => (currentTheme = v));
-
-export const getAssetURL = (asset: Asset): string => {
-	return typeof asset === 'string' ? asset : currentTheme ? asset.dark : asset.light;
-};

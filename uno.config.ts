@@ -1,8 +1,6 @@
-import extractorSvelte from '@unocss/extractor-svelte';
-import { defineConfig, presetUno, presetWebFonts, presetIcons } from 'unocss';
+import { defineConfig, presetIcons, presetWebFonts } from 'unocss';
 
 export default defineConfig({
-	extractors: [extractorSvelte()],
 	content: {
 		pipeline: {
 			include: [
@@ -12,8 +10,40 @@ export default defineConfig({
 			]
 		}
 	},
+	safelist: [
+		// Nav bar icons
+		'i-carbon-code',
+		'i-carbon-assembly-cluster',
+		'i-carbon-cube',
+		'i-carbon-development',
+		'i-carbon-education',
+		'i-carbon-document',
+		'i-carbon-search',
+		'i-carbon-moon',
+		'i-carbon-sun',
+		'i-carbon-menu',
+		// Home page social icons
+		'i-carbon-logo-github',
+		'i-carbon-logo-linkedin',
+		'i-carbon-logo-twitter',
+		'i-carbon-at',
+		'i-carbon-overflow-menu-horizontal',
+		'i-carbon-logo-youtube',
+		// Other commonly used icons
+		'i-carbon-arrow-left',
+		'i-carbon-arrow-right',
+		'i-carbon-chevron-left',
+		'i-carbon-chevron-right',
+		'i-carbon-close',
+		'i-carbon-link',
+		'i-carbon-launch',
+		'i-carbon-calendar',
+		'i-carbon-location',
+		'i-carbon-user',
+		'i-carbon-email',
+		'i-carbon-phone'
+	],
 	presets: [
-		presetUno(),
 		presetWebFonts({
 			fonts: {
 				sans: {
@@ -27,17 +57,9 @@ export default defineConfig({
 		presetIcons({
 			extraProperties: {
 				display: 'inline-block',
-				'vertical-align': 'middle'
+				'vertical-align': 'middle',
+				'font-size': '1em'
 			}
 		})
-	],
-	shortcuts: [
-		{
-			col: 'flex flex-col',
-			row: 'flex flex-row',
-
-			'col-center': 'col justify-center items-center',
-			'row-center': 'row justify-center items-center'
-		}
 	]
 });

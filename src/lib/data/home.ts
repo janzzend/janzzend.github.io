@@ -1,44 +1,33 @@
-import { Platform } from '$lib/types';
+import BaseData from './base';
 import { getSkills } from './skills';
+import type { Skill } from './types';
 
-export const title = 'Home';
+const title = 'Home';
 
-export const name = 'Janzzen Matthew';
+const hero: {
+	title: string;
+	description: string;
+	links: Array<{ label: string; href: string; icon: `i-carbon-${string}` }>;
+} = {
+	title: `${BaseData.fullName},`,
+	description:
+		'A mobile engineer focused on native iOS and Android development, with 8+ years of experience building user-centric mobile solutions.',
+	links: [
+		{ label: 'GitHub', href: 'https://github.com/janzzend', icon: 'i-carbon-logo-github' },
+		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/janzzend', icon: 'i-carbon-logo-linkedin' },
+		{ label: 'Twitter', href: 'https://x.com/janzzendj', icon: 'i-carbon-logo-twitter' },
+		{ label: 'Email', href: 'mailto:janzzen.dejesus@gmail.com', icon: 'i-carbon-at' },
+		{ label: 'StackOverflow', href: 'https://stackoverflow.com/users/27356777/janzzend', icon: 'i-carbon-overflow-menu-horizontal' },
+		{ label: 'YouTube', href: 'https://www.youtube.com/@janzzend', icon: 'i-carbon-logo-youtube' }
+	]
+};
 
-export const lastName = 'De Jesus';
+const carousel: Array<Skill> = getSkills('swift', 'kotlin', 'objc', 'java', 'android', 'ios');
 
-export const description =
-	'A mobile engineer focused on native iOS and Android development.';
+const HomeData = {
+	title,
+	hero,
+	carousel
+};
 
-export const links: Array<{ platform: Platform; link: string }> = [
-	{ 
-		platform: Platform.GitHub, 
-		link: 'https://github.com/janzzend' 
-	},
-	{
-		platform: Platform.Linkedin,
-		link: 'https://www.linkedin.com/in/janzzend'
-	},
-	{
-		platform: Platform.StackOverflow,
-		link: 'https://stackoverflow.com/users/27356777/janzzend'
-	},
-	{
-		platform: Platform.Email,
-		link: 'janzzen.dejesus@gmail.com'
-	},
-	{
-		platform: Platform.Facebook,
-		link: 'https://www.facebook.com/janzzend'
-	},
-	{
-		platform: Platform.Twitter,
-		link: 'https://x.com/janzzendj'
-	},
-	{
-		platform: Platform.Youtube,
-		link: 'https://www.youtube.com/@janzzend'
-	},
-];
-
-export const skills = getSkills('swift', 'kotlin', 'objc', 'java', 'android', 'ios');
+export default HomeData;
