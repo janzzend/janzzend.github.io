@@ -1,0 +1,1 @@
+import{i as a}from"./DDR7ydvu.js";function s(){const n=a();return t=>{const{originalEvent:e}=t.detail,{cancelable:r}=t,c=e.type;n(c,{originalEvent:e,currentTarget:e.currentTarget},{cancelable:r})||t.preventDefault()}}export{s as c};
