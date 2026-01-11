@@ -6,25 +6,26 @@ import Assets from './assets';
 const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCategory<S> => data;
 
 const categories = [
-	defineSkillCategory({ name: 'In Progress...', slug: 'progress' }),
 	defineSkillCategory({ name: 'Platforms', slug: 'platform' }),
 	defineSkillCategory({ name: 'Programming Languages', slug: 'pro-lang' }),
-	defineSkillCategory({ name: 'Frameworks', slug: 'framework' }),
-	defineSkillCategory({ name: 'Integrations', slug: 'integration' }),
-	defineSkillCategory({ name: 'Analytics', slug: 'analytics' }),
-	defineSkillCategory({ name: 'Hardware Integration', slug: 'hardware' }),
+	defineSkillCategory({ name: 'Architectures', slug: 'architecture' }),
 	defineSkillCategory({ name: 'Design Patterns', slug: 'pattern' }),
-	defineSkillCategory({ name: 'Version Control', slug: 'version-control' }),
-	defineSkillCategory({ name: 'Project Management', slug: 'projman' }),
-	defineSkillCategory({ name: 'API', slug: 'api' }),
-	defineSkillCategory({ name: 'Lint', slug: 'lint' }),
-	defineSkillCategory({ name: 'Cloud Services', slug: 'cloud' }),
-	defineSkillCategory({ name: 'Databases', slug: 'db' }),
-	defineSkillCategory({ name: 'DevOps', slug: 'devops' }),
-	defineSkillCategory({ name: 'Testing', slug: 'test' }),
+	defineSkillCategory({ name: 'Frameworks', slug: 'framework' }),
 	defineSkillCategory({ name: 'Dev Tools', slug: 'devtools' }),
+	defineSkillCategory({ name: 'Testing', slug: 'test' }),
+	defineSkillCategory({ name: 'API', slug: 'api' }),
+	defineSkillCategory({ name: 'Databases', slug: 'db' }),
+	defineSkillCategory({ name: 'Hardware Integration', slug: 'hardware' }),
+	defineSkillCategory({ name: 'Integrations', slug: 'integration' }),
+	defineSkillCategory({ name: 'Cloud Services', slug: 'cloud' }),
+	defineSkillCategory({ name: 'DevOps', slug: 'devops' }),
+	defineSkillCategory({ name: 'Version Control', slug: 'version-control' }),
+	defineSkillCategory({ name: 'Lint', slug: 'lint' }),
 	defineSkillCategory({ name: 'Markup & Style', slug: 'markup-style' }),
-	defineSkillCategory({ name: 'Design', slug: 'design' })
+	defineSkillCategory({ name: 'Project Management', slug: 'projman' }),
+	defineSkillCategory({ name: 'Analytics', slug: 'analytics' }),
+	defineSkillCategory({ name: 'Design', slug: 'design' }),
+	defineSkillCategory({ name: 'In Progress...', slug: 'progress' })
 ] as const;
 
 const defineSkill = <S extends string>(
@@ -99,7 +100,7 @@ const items = [
 		description: 'The Composable Architecture (TCA) is a library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind. It is commonly used in Swift/SwiftUI development for state management and side effects.',
 		logo: Assets.Unknown,
 		name: 'TCA',
-		category: 'framework'
+		category: 'architecture'
 	}),
 	defineSkill({
 		slug: 'ios',
