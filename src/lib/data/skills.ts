@@ -8,7 +8,6 @@ const defineSkillCategory = <S extends string>(data: SkillCategory<S>): SkillCat
 const categories = [
 	defineSkillCategory({ name: 'Platforms', slug: 'platform' }),
 	defineSkillCategory({ name: 'Programming Languages', slug: 'pro-lang' }),
-	defineSkillCategory({ name: 'Architectures', slug: 'architecture' }),
 	defineSkillCategory({ name: 'Design Patterns', slug: 'pattern' }),
 	defineSkillCategory({ name: 'Frameworks', slug: 'framework' }),
 	defineSkillCategory({ name: 'Dev Tools', slug: 'devtools' }),
@@ -80,6 +79,16 @@ export const groupByCategory = (
 		out.push({ category: { name: 'Others', slug: 'others' }, items: others });
 	}
 
+	// Sort by category order defined in categories array
+	out.sort((a, b) => {
+		const aIndex = categories.findIndex((c) => c.slug === a.category.slug);
+		const bIndex = categories.findIndex((c) => c.slug === b.category.slug);
+		// Put categories not found in the array at the end
+		if (aIndex === -1) return 1;
+		if (bIndex === -1) return -1;
+		return aIndex - bIndex;
+	});
+
 	return out;
 };
 
@@ -100,7 +109,7 @@ const items = [
 		description: 'The Composable Architecture (TCA) is a library for building applications in a consistent and understandable way, with composition, testing, and ergonomics in mind. It is commonly used in Swift/SwiftUI development for state management and side effects.',
 		logo: Assets.Unknown,
 		name: 'TCA',
-		category: 'architecture'
+		category: 'pattern'
 	}),
 	defineSkill({
 		slug: 'ios',
