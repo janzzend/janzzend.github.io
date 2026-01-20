@@ -1,1 +1,0 @@
-import{f as e,a as i}from"./DUy0_PCv.js";import"./B310oLWm.js";import{t as f}from"./DDR7ydvu.js";import{d as p}from"./CmhTOKh1.js";import{p as t}from"./CULy4_op.js";var c=e("<i></i>");function v(r,o){let m=t(o,"icon",8),s=t(o,"className",8,"");var a=c();f(()=>p(a,1,`flex-shrink-0 ${s()} ${m()}`)),i(r,a)}export{v as I};
